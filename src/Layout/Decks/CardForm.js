@@ -1,12 +1,11 @@
 import React from "react"; 
 
-function CardForm({ onClick, deckName, buttonText2, buttonText1, title, handleSubmit, changeHandler, formInfo}){ //add the props from the other forms 
+function CardForm({ onClick, buttonText2, buttonText1, handleSubmit, changeHandler, formInfo}){ //add the props from the other forms 
 
 
   console.log("formInfo", formInfo)
    return (
-    <>
-    <h1> {`${deckName}${title}`} </h1>
+    <div> 
     <form onSubmit= {handleSubmit}>
         <label>Front:
            <textarea
@@ -33,7 +32,7 @@ function CardForm({ onClick, deckName, buttonText2, buttonText1, title, handleSu
         </div>
 
     </form>
-    </>
+    </div>
    )
 }
 

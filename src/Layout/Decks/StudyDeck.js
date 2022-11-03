@@ -18,7 +18,6 @@ function StudyDeck() {
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
-  console.log(deck);
 
   const history = useHistory(); //has to be within a react component or react hook function
 
@@ -41,7 +40,7 @@ function StudyDeck() {
     return (
       <div className="container">
         <div className="row">
-          <h1> Study: {deck.name} </h1>
+          <h1>Study: {deck.name}</h1>
         </div>
         <h1>Not Enough Cards.</h1>
         <p>{`You need at least 3 cards to study. There are ${deck.cards.length} cards in this deck`}</p>

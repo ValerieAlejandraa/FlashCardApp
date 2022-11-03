@@ -22,7 +22,7 @@ function EditCard() {
     setDeck({})
     setError(null)
     getData(deckId, cardId);
-  }, [deckId, cardId]);
+  }, [deckId, cardId, error]);
   
   
   async function getData(deckId, cardId){
@@ -64,8 +64,9 @@ function EditCard() {
  }
 
   return (
+    <div>
+      <h1>Edit Card!</h1>
     <CardForm
-      title="Edit Card!"
       buttonText1="Cancel"
       buttonText2="Submit"
       formInfo={card}
@@ -74,6 +75,7 @@ function EditCard() {
       changeHandler={changeHandler}
       handleSubmit={handleSubmit}
     ></CardForm>
+    </div>
   );
 }
 

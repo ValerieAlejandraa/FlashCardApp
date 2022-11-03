@@ -7,6 +7,7 @@ function AddCard(){
 
 const [deck, setDeck] = useState({});
 
+
 const [ formInfo, setFormInfo ]= useState({
     front:"",
     back:""
@@ -28,6 +29,7 @@ useEffect(()=> {
    readDeck(deckId, abortController.signal).then(setDeck);
    return () => abortController.abort()
 }, [deckId])
+console.log("Line 32", deck)
  
 const history = useHistory();
 const onClick = () => {
@@ -36,27 +38,34 @@ const onClick = () => {
 
 const handleSubmit = (e) => {
    e.preventDefault();
-   createCard(deckId, formInfo )
+   createCard(deckId,formInfo)
    setFormInfo(formInfo) // this doesn't make the page rerender, ask TA
    history.go(0)//other way: refresh the page, 1 makes you go forward
 }
 
 
-console.log(deck)
+if(!deck.id){
  return (
-    <CardForm
-    deckName= {`${deck.name} :`}
-    title="Add Card!"
-    buttonText1="Done"
-    buttonText2="Save"
-    handleSubmit={handleSubmit}
-    formInfo={formInfo}
-    setFormInfo={setFormInfo}
-    changeHandler={changeHandler}
-    onClick={onClick}
-    />
+    <p>Loading...</p>
  )
-
+ } else {
+   return (
+      <div>
+      <div>
+      <h1>{deck.name}: Add Card</h1>
+      </div>
+      <CardForm
+      buttonText1="Done"
+      buttonText2="Save"
+      handleSubmit={handleSubmit}
+      formInfo={formInfo}
+      setFormInfo={setFormInfo}
+      changeHandler={changeHandler}
+      onClick={onClick}
+      />
+      </div>
+   )
+ }
  }
 
 
