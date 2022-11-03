@@ -9,21 +9,36 @@ function CardItem({deck, card}){
         if (confirm) {
             deleteCard(card.id)
             .then(window.location.reload());
-        }
+            }
         }
 
- 
     return (
-       <div className="card" key={card.id}>
-       <p >{card.front}</p>
-       <p>{card.back}</p>
-       <div>
-        <Link to={`/decks/${deck.id}/cards/${card.id}/edit`}> 
-        <button type="button" className="btn btn-secondary btn-sm">Edit</button>
-        </Link>
-       <button type="button" className="btn btn-danger btn-sm" onClick={handleDelete} value={card.id}>Delete</button>
-       </div>
-       </div>
+        <li className="list-group-item list-group-item-action flex-column align-items-start">
+            <div className="row m-3">
+                <div className="col-md-12">
+                    <div className="row" key={card.id}>
+                        <div className="col">{card.front}</div>
+                        <div className="col">{card.back}</div>
+                    </div>
+                    <div className="col text-right mt-2">
+                        <Link
+                            to={`/decks/${deck.id}/cards/${card.id}/edit`}
+                            className="btn btn-secondary mr-2"
+                            title="Edit Card"
+                        >
+                            <span className="oi oi-pencil" /> Edit
+                        </Link>
+                        <button className="btn btn-danger" title="Delete Card">
+                            <span
+                            className="oi oi-trash"
+                            onClick={handleDelete} value={card.id}
+                            />
+                        </button>
+                    </div>
+                </div>
+            </div>
+       </li>
+      
     )
  }
 

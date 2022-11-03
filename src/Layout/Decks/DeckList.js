@@ -18,36 +18,35 @@ function DeckList({ decks }) {
   return (
     <div>
       {decks.map((deck, index) => (
-        <div key={index}>
-          <div className="card" >
+        <div className="card w-100 my-3" key={index}>
+          <div className="card-body">
             <div className="row">
               <div className="col-9">
                 <h3 className="card-title">{deck.name}</h3>
-              </div>
-              <div className="col-3">
-                <p>{deck.cards.length} cards</p>
+                <p> {deck.cards.length} cards</p>
               </div>
             </div>
             <p className="card-text">{deck.description}</p>
-            <div className="container">
-              <div className="row justify-content-between">
+            <div >
+              <div className = "row justify-content-between">
                 <div className="col-4">
                   <Link to={`/decks/${deck.id}`}>
-                    <button className="btn btn-secondary mr-1">
+                    <button className="btn btn-secondary mb-2 mr-2 mt-2">
                       <i className="bi bi-eye mr-1"></i>
                       View
                     </button>
                   </Link>
                   <Link to={`/decks/${deck.id}/study`}>
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary mb-2 mr-2 mt-2">
                       <i className="bi bi-book mr-1"></i>
                       Study
                     </button>
                   </Link>
+                  </div>
                   <div className="col-2">
                     <button
                       value={deck.id}
-                      className="btn btn-danger"
+                      className="btn btn-danger mb-2 mr-2 mt-2"
                       onClick={handleDelete}
                     >
                       Delete
@@ -57,7 +56,6 @@ function DeckList({ decks }) {
               </div>
             </div>
           </div>
-        </div>
       ))}
     </div>
   );

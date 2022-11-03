@@ -2,6 +2,7 @@ import CardForm from "./CardForm"
 import React, {useState, useEffect} from "react"; 
 import { readDeck, createCard } from "../../utils/api";
 import {useParams, useHistory } from "react-router-dom";
+import BreadCrumb from "../Common/BreadCrumb";
 
 function AddCard(){
 
@@ -52,7 +53,8 @@ if(!deck.id){
    return (
       <div>
       <div>
-      <h1><span>{deck.name}</span>:<span>Add Card</span></h1>
+      <BreadCrumb link={`/decks/${deck.id}`} linkName={deck.name} pageName={"Add Card"} />
+      <h2><span>{deck.name}</span>: <span>Add Card</span></h2>
       </div>
       <CardForm
       buttonText1="Done"

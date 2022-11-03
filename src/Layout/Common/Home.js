@@ -38,7 +38,9 @@ function Home(){
             <div>
                 <Link to="/decks/new"><button className="btn btn-primary btn-large"><i className="bi bi-plus"></i>Create Deck</button></Link>
             </div>
+      
             <DeckList decks={decks} setDecks={setDecks} />
+            
         </div>
        )
 }

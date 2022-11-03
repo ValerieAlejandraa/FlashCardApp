@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardForm from "./CardForm";
 import { readCard, readDeck, updateCard } from "../../utils/api/index";
 import { useParams, useHistory } from "react-router-dom";
-
+import BreadCrumb from "../Common/BreadCrumb";
 //the path is added to index.js and cardItem(as a link)
 function EditCard() {
     const history = useHistory();
@@ -65,7 +65,12 @@ function EditCard() {
 
   return (
     <div>
-      <h1>Edit Card!</h1>
+      <BreadCrumb
+        link={`/decks/${deckId}/cards/${cardId}/edit`}
+        linkName={deck.name}
+        pageName={"Edit Card"}
+      />
+      <h1>Edit Card</h1>
     <CardForm
       buttonText1="Cancel"
       buttonText2="Submit"

@@ -1,29 +1,34 @@
 import React from "react";
 //reusable deck form for create deck and edit deck 
-function DeckForm({ formData, handleChange, handleSubmit }) {
+function DeckForm({ formData, title, handleChange, handleSubmit }) {
 
     return (
-        <form onSubmit={handleSubmit}>
+        
+        <form className="form-group" onSubmit={handleSubmit}>
             <label >
                 Name:
+            </label>
                 <br />
                 <input
                     type="text"
+                    placeholder="Name of Deck"
                     id="name"
                     name="name"
                     className="form-control"
                     value={formData.name}
                     onChange={handleChange}
-                    style={{ width: "auto"}}
+                    style={{ width: "100%"}}
                     required
                     />
-            </label>
             <br />
             <label htmlFor="description">
                 Description:
-                <br />
-                <textarea
+                
+            </label>
+            <br/>
+            <textarea
                     id="description"
+                    placeholder="Brief description of the deck"
                     name="description"
                     className="form-control"
                     value={formData.description}
@@ -32,7 +37,6 @@ function DeckForm({ formData, handleChange, handleSubmit }) {
                     style={{ width: "100%"}}
                     required
                 />
-            </label>
         </form>
     )
 

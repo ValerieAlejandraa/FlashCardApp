@@ -6,18 +6,17 @@ function BreadCrumb({ linkName="", link="", pageName="Page Name"}) {
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
                 <li className="breadcrumb-item text-secondary">
-            <Link className="m-1" to="/"><i className="bi bi-house m-1"></i>Home</Link>
+            <Link to="/">Home</Link>
             </li>
-            
-                {link !== "" ? <li className="breadcrumb-item text-secondary">
-                    <p className="m-1 text-info"></p>
-                    <Link to={link}>{linkName}</Link>
+            {link !== "" 
+                ? 
+                    <li className="breadcrumb-item text-secondary">
+                        <Link to={link}>{linkName}</Link>
                     </li>
-                    : ""}
-    
+                : "" }
 
-            <li className="breadcrumb-item active" aria-current="page">
-                <p className="m-1 text-info">{pageName}</p>
+            <li className="breadcrumb-item active" page-current="page">
+                {pageName}
             </li>
           </ol>
         </nav>
