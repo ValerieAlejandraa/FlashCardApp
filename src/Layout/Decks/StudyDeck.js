@@ -3,7 +3,7 @@ import { readDeck } from "../../utils/api";
 import { useParams, Link } from "react-router-dom";
 import StudyCard from "./StudyCard";
 import { useHistory } from "react-router-dom";
-
+import BreadCrumb from "../Common/BreadCrumb.js";
 
 
 function StudyDeck() {
@@ -14,7 +14,7 @@ function StudyDeck() {
   const { deckId } = useParams();
 
   const card = deck.cards[currentCardIndex];
-
+  
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
@@ -39,8 +39,9 @@ function StudyDeck() {
   if (deck.cards.length < 3) {
     return (
       <div className="container">
+        <BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />
         <div className="row">
-          <h1>Study: {deck.name}</h1>
+          <h1><span>Study</span>:<span>{deck.name}</span></h1>
         </div>
         <h1>Not Enough Cards.</h1>
         <p>{`You need at least 3 cards to study. There are ${deck.cards.length} cards in this deck`}</p>
@@ -55,15 +56,18 @@ function StudyDeck() {
 
   return (
     <>
+    <BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />
       <div className="row">
-        <h1> Study: {deck.name} </h1>
+        <h1><span>Study</span>:<span>{deck.name}</span></h1>
       </div>
       <div className="row">
         <StudyCard
           card={card}
+          currentCardIndex= {currentCardIndex}
           setShowCard={setShowCard}
           showCard={showCard}
           handleNext={handleNext}
+          cards ={deck.cards}
         />
       </div>
     </>

@@ -1,7 +1,6 @@
 import React from "react";
 
-function StudyCard({ card, setShowCard, showCard, handleNext }) {
-
+function StudyCard({ card, currentCardIndex, cards, setShowCard, showCard, handleNext }) {
   const handleFlip = () => {
     setShowCard(!false);
   };
@@ -14,8 +13,9 @@ function StudyCard({ card, setShowCard, showCard, handleNext }) {
   if (showCard) { //show card is !false which will show the back 
     return (
     <>
-    {card?.back} 
-    <div>
+    <div className="card">
+    <div>{card?.back}</div> 
+    <h5>Card {currentCardIndex + 1} of {cards.length}</h5>
     <button onClick={handleFlip2}>Flip</button>
     <button onClick={handleNext}>Next</button>
     </div>
@@ -24,13 +24,14 @@ function StudyCard({ card, setShowCard, showCard, handleNext }) {
   }
 
   return (
-    <>
+    <div className="card">
+      <h5>Card {currentCardIndex + 1} of {cards.length}</h5>
       <div>{card?.front}</div>
       <button onClick={handleFlip}>Flip</button>
-      
-    </>
+    </div>
   );
 }
+
 
 export default StudyCard;
 

@@ -39,7 +39,7 @@ const onClick = () => {
 const handleSubmit = (e) => {
    e.preventDefault();
    createCard(deckId,formInfo)
-   setFormInfo(formInfo) // this doesn't make the page rerender, ask TA
+   //setFormInfo(formInfo) // this doesn't make the page rerender, ask TA
    history.go(0)//other way: refresh the page, 1 makes you go forward
 }
 
@@ -52,7 +52,7 @@ if(!deck.id){
    return (
       <div>
       <div>
-      <h1>{deck.name}: Add Card</h1>
+      <h1><span>{deck.name}</span>:<span>Add Card</span></h1>
       </div>
       <CardForm
       buttonText1="Done"

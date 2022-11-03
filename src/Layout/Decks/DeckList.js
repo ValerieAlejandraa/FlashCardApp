@@ -19,7 +19,7 @@ function DeckList({ decks }) {
     <div>
       {decks.map((deck, index) => (
         <div key={index}>
-          <div className="card-body">
+          <div className="card" >
             <div className="row">
               <div className="col-9">
                 <h3 className="card-title">{deck.name}</h3>
